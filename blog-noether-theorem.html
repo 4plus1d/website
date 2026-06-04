@@ -250,7 +250,7 @@
     <main>
         <article>
             <div class="blog-header">
-                <h1>Noether's Theorem Done Right: Boundaries Matter</h1>
+                <h1>On Boundary Variations in Noether's Conservation Laws</h1>
                 <div class="blog-meta">
                     By Ram Prakash | June 4, 2026 | Category: Classical Mechanics / Field Theory
                 </div>
@@ -371,22 +371,21 @@
                 <p>Integrating by parts yields:</p>
 
                 <div class="equation-box">
-                    \[
-                    \delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q^i} - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i} \right) \epsilon \, \theta^i \, dt + \left. \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i \right\bigg|_{t_1}^{t_2} = 0
-                    \]
-                </div>
+    \[
+    \delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q^i} - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i} \right) \epsilon \, \theta^i \, dt + \left. \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i \right|_{t_1}^{t_2} = 0
+    \]
+</div>
 
-                <p>
-                    For a trajectory that satisfies the classical equations of motion, the integral vanishes, leaving:
-                </p>
+<p>
+    For a trajectory that satisfies the classical equations of motion, the integral vanishes, leaving:
+</p>
 
-                <div class="definition-box">
-                    <h4>Noether's Conserved Quantity (Fixed Boundaries)</h4>
-                    \[
-                    \left. \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i \right\bigg|_{t_1}^{t_2} = 0 \implies \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i = \text{Constant}
-                    \]
-                </div>
-
+<div class="definition-box">
+    <h4>Noether's Conserved Quantity (Fixed Boundaries)</h4>
+    \[
+    \left. \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i \right|_{t_1}^{t_2} = 0 \implies \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i = \text{Constant}
+    \]
+</div>
                 <p>
                     However, assuming the boundary term remains the same is <strong>not valid in general</strong>, especially when the time coordinate itself is subjected to variation.
                 </p>
