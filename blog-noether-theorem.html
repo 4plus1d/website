@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noether's Theorem Done Right | Ram Prakash</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fafafa;
+        }
+
+        header {
+            padding: 2rem 5%;
+            border-bottom: 1px solid #e0e0e0;
+            background: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 5% 1rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            min-height: calc(100vh - 200px);
+        }
+
+        .blog-header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .blog-content {
+            font-size: 1.1rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .blog-content h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            color: #34495e;
+            margin: 2rem 0 1rem;
+        }
+
+        .equation-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .definition-box {
+            background: #fff9e6;
+            border: 2px solid #f39c12;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .definition-box h4 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .highlight-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 350px;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-featured-image svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        ul, ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .references {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .references h2 {
+            margin-bottom: 1rem;
+        }
+
+        .references ol {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 1.5rem;
+            }
+
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Ram Prakash / राम प्रकाश</a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blogs.html" class="active">Blogs</a></li>
+                <li><a href="interests.html">Interests</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <a href="blogs.html" class="back-link">← Back to Blogs</a>
+
+    <main>
+        <article>
+            <div class="blog-header">
+                <h1>Noether's Theorem Done Right: Boundaries Matter</h1>
+                <div class="blog-meta">
+                    By Ram Prakash | June 4, 2026 | Category: Classical Mechanics / Field Theory
+                </div>
+            </div>
+
+            <div class="blog-content">
+
+                <!-- Hero SVG -->
+                <div class="blog-featured-image">
+                    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 50%, #0d0d3a 100%);">
+                        <!-- Original domain Ω -->
+                        <ellipse cx="280" cy="175" rx="140" ry="110" fill="none" stroke="#3498db" stroke-width="2.5" opacity="0.8"/>
+                        <text x="280" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#3498db" opacity="0.9">Ω</text>
+
+                        <!-- Shifted domain Ω' -->
+                        <ellipse cx="340" cy="160" rx="140" ry="110" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="8,4" opacity="0.7"/>
+                        <text x="440" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#e74c3c" opacity="0.9">Ω'</text>
+
+                        <!-- Overlap region shading -->
+                        <clipPath id="clipOmega">
+                            <ellipse cx="280" cy="175" rx="140" ry="110"/>
+                        </clipPath>
+                        <clipPath id="clipOmegaPrime">
+                            <ellipse cx="340" cy="160" rx="140" ry="110"/>
+                        </clipPath>
+                        <ellipse cx="340" cy="160" rx="140" ry="110" fill="#9b59b6" opacity="0.1" clip-path="url(#clipOmega)"/>
+
+                        <!-- Transformation arrows -->
+                        <defs>
+                            <marker id="arrowN" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#f39c12" opacity="0.9"/>
+                            </marker>
+                        </defs>
+
+                        <line x1="220" y1="120" x2="270" y2="108" stroke="#f39c12" stroke-width="2" marker-end="url(#arrowN)" opacity="0.7"/>
+                        <line x1="250" y1="80" x2="300" y2="68" stroke="#f39c12" stroke-width="2" marker-end="url(#arrowN)" opacity="0.7"/>
+                        <line x1="350" y1="270" x2="400" y2="258" stroke="#f39c12" stroke-width="2" marker-end="url(#arrowN)" opacity="0.7"/>
+                        <line x1="170" y1="200" x2="220" y2="188" stroke="#f39c12" stroke-width="2" marker-end="url(#arrowN)" opacity="0.7"/>
+
+                        <!-- εθ^μ label -->
+                        <text x="210" y="95" font-family="Georgia, serif" font-size="13" fill="#f39c12" opacity="0.9">εθ<tspan baseline-shift="super" font-size="9">μ</tspan></text>
+
+                        <!-- Boundary labels -->
+                        <text x="155" y="290" font-family="Georgia, serif" font-size="13" fill="#3498db" opacity="0.8">∂Ω</text>
+                        <text x="445" y="75" font-family="Georgia, serif" font-size="13" fill="#e74c3c" opacity="0.8">∂Ω'</text>
+
+                        <!-- Key equation -->
+                        <text x="620" y="140" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" opacity="0.9">δS = δS</text>
+                        <text x="680" y="140" font-family="Georgia, serif" font-size="10" fill="#3498db" opacity="0.9" baseline-shift="super">boundary</text>
+
+                        <text x="632" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" opacity="0.9">+ δS</text>
+                        <text x="667" y="170" font-family="Georgia, serif" font-size="10" fill="#e74c3c" opacity="0.9" baseline-shift="super">internal</text>
+
+                        <!-- Bottom caption -->
+                        <text x="400" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#bdc3c7" opacity="0.8">Spacetime domain deformation under coordinate transformation x'<tspan baseline-shift="super" font-size="9">μ</tspan> = x<tspan baseline-shift="super" font-size="9">μ</tspan> + εθ<tspan baseline-shift="super" font-size="9">μ</tspan></text>
+                    </svg>
+                </div>
+                <div class="image-caption">The total variation of the action arises from two geometric sources: the shift of the integration boundary and the variation of the field inside the domain.</div>
+
+                <!-- Section 1: Introduction -->
+                <h2>1. Introduction</h2>
+
+                <p>
+                    In classical mechanics and field theory, a continuous set of transformations is termed a <em>symmetry</em> if applying the transformation leaves the action invariant up to first order. Standard derivations of Noether's theorem often rely on fixed boundaries, which creates confusion when analyzing spacetime symmetries. This note clarifies the process: deriving the correct conserved currents requires strictly accounting for how transformations shift those boundaries.
+                </p>
+
+                <div class="highlight-box">
+                    <p><strong>Key Insight:</strong> Standard derivations of Noether's theorem often rely on fixed boundaries, which creates confusion when analyzing spacetime symmetries. Deriving the correct conserved currents requires strictly accounting for how transformations shift those boundaries.</p>
+                </div>
+
+                <p>
+                    We begin our analysis with point particles, first examining the case where the Lagrangian is strictly invariant, and then generalizing to scenarios where the Lagrangian differs by a total time derivative (which preserves the equations of motion). Later, we extend this exact sequence to classical fields.
+                </p>
+
+                <p>
+                    For a field defined over a spacetime domain \(\Omega\), the case of a strictly invariant Lagrangian is expressed as:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    I = \int_{\Omega'} d^4x' \, \mathcal{L}(\phi'(x'^\mu), \partial'_\mu \phi'(x'^\nu)) = \int_{\Omega} d^4x \, \mathcal{L}(\phi(x^\mu), \partial_\mu \phi(x^\mu))
+                    \]
+                </div>
+
+                <p>
+                    Following this, the corresponding field-theoretic case where the Lagrangian differs by a four-divergence is also discussed.
+                </p>
+
+                <!-- Section 2: Particle Dynamics -->
+                <h2>2. Particle Dynamics and Fixed Boundaries</h2>
+
+                <p>Consider an action in classical mechanics:</p>
+
+                <div class="equation-box">
+                    \[
+                    S = \int_{t_1}^{t_2} L(q^i, \dot{q}^i, t) \, dt
+                    \]
+                </div>
+
+                <p>
+                    with fixed boundary conditions \(q^i(t_1) = q^i_1\) and \(q^i(t_2) = q^i_2\). We apply a smooth variation to the coordinates:
+                </p>
+
+                \[
+                q'^i = q^i + \epsilon \, \theta^i(q^i, t)
+                \]
+
+                <p>
+                    such that \(\delta S = 0\) up to first order in \(\epsilon\). Because standard textbooks assume the boundary conditions at \(t_1\) and \(t_2\) remain unaltered, the surface terms are typically discarded. This leads to:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    \delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q^i} \, \epsilon \, \theta^i + \frac{\partial L}{\partial \dot{q}^i} \, \epsilon \, \dot{\theta}^i \right) dt = 0
+                    \]
+                </div>
+
+                <p>Integrating by parts yields:</p>
+
+                <div class="equation-box">
+                    \[
+                    \delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q^i} - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i} \right) \epsilon \, \theta^i \, dt + \left. \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i \right\bigg|_{t_1}^{t_2} = 0
+                    \]
+                </div>
+
+                <p>
+                    For a trajectory that satisfies the classical equations of motion, the integral vanishes, leaving:
+                </p>
+
+                <div class="definition-box">
+                    <h4>Noether's Conserved Quantity (Fixed Boundaries)</h4>
+                    \[
+                    \left. \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i \right\bigg|_{t_1}^{t_2} = 0 \implies \frac{\partial L}{\partial \dot{q}^i} \epsilon \, \theta^i = \text{Constant}
+                    \]
+                </div>
+
+                <p>
+                    However, assuming the boundary term remains the same is <strong>not valid in general</strong>, especially when the time coordinate itself is subjected to variation.
+                </p>
+
+                <!-- Section 3: Time Translation -->
+                <h2>3. Time Translation and Surface Terms</h2>
+
+                <p>
+                    Let us rigorously apply a time translation symmetry, \(t \to t + \alpha\). The boundary shifts, giving \(dt' = dt\) (i.e., the Jacobian \(|J| = 1\)), and the varied action becomes:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    S' = \int_{t_1+\alpha}^{t_2+\alpha} L(q', \dot{q}', t') \, dt'
+                    \]
+                </div>
+
+                <p>
+                    where \(q'(t') = q'(t+\alpha) = q(t)\). Under this transformation, the physical path is simply shifted in time, meaning the new coordinates evaluated at the new time are identical to the old coordinates at the old time. Therefore:
+                </p>
+
+                \[
+                q'(t) = q(t - \alpha) \approx q(t) - \dot{q}(t)\alpha
+                \]
+
+                <p>
+                    To find the total variation \(\delta S = S' - S\), we must shift the domain of integration back to \([t_1, t_2]\). For a generic function \(f(t)\), shifting the integration bounds by a small parameter \(\alpha\) generates boundary terms via Taylor expansion:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    \int_{t_1+\alpha}^{t_2+\alpha} f(t)\,dt \approx \int_{t_1}^{t_2} f(t)\,dt + \alpha \, f(t) \bigg|_{t_1}^{t_2}
+                    \]
+                </div>
+
+                <p>Applying this property to our integral, and keeping only terms up to first order in \(\alpha\) for the boundary evaluation:</p>
+
+                \[
+                S' = \int_{t_1}^{t_2} \left[ L(q,\dot{q},t) - \alpha \frac{\partial L}{\partial q^i} \dot{q}^i - \alpha \frac{\partial L}{\partial \dot{q}^i} \ddot{q}^i + \alpha \frac{\partial L}{\partial t} \right] dt + \alpha \, L(q,\dot{q},t)\bigg|_{t_1}^{t_2}
+                \]
+
+                <p>Subtracting the original action \(S = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt\):</p>
+
+                <div class="equation-box">
+                    \[
+                    \delta S = \int_{t_1}^{t_2} \left[ -\alpha \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i} \dot{q}^i + \alpha \frac{\partial L}{\partial t} \right] dt + \alpha \, L(q,\dot{q},t)\bigg|_{t_1}^{t_2}
+                    \]
+                </div>
+
+                <p>By the product rule, the integrand collapses into a total time derivative:</p>
+
+                \[
+                -\alpha \frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q}^i} \dot{q}^i \right)
+                \]
+
+                <p>Grouping the evaluated boundary terms together yields the final result:</p>
+
+                <div class="equation-box">
+                    \[
+                    \delta S = \alpha \left( L(q,\dot{q},t) - \frac{\partial L}{\partial \dot{q}^i} \dot{q}^i \right) \bigg|_{t_1}^{t_2} + \int_{t_1}^{t_2} \frac{\partial L}{\partial t} \alpha \, dt
+                    \]
+                </div>
+
+                <p>For the case where the Lagrangian has no explicit time dependence (\(\frac{\partial L}{\partial t} = 0\)), the symmetry demands:</p>
+
+                <div class="definition-box">
+                    <h4>Conservation of the Hamiltonian</h4>
+                    \[
+                    \frac{\partial L}{\partial \dot{q}^i} \dot{q}^i - L(q, \dot{q}) \equiv H \quad \text{(Hamiltonian) is conserved.}
+                    \]
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Crucial Observation:</strong> It is crucial to note that the \(L(q, \dot{q})\) term in the conserved quantity appears <em>directly because of the shifted boundary</em> (the surface term), a detail often missed out while evaluating integrals over an assumed infinite domain.</p>
+                </div>
+
+                <!-- Section 4: Classical Field Theory -->
+                <h2>4. Classical Field Theory: Form vs. Total Variation</h2>
+
+                <p>
+                    Transitioning to classical field theory, consider a Lagrangian density \(\mathcal{L}(\phi, \partial_\mu \phi)\) integrated over a spacetime domain \(\Omega\):
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    S = \int_{\Omega} \mathcal{L}(\phi, \partial_\mu \phi) \, d^4x
+                    \]
+                </div>
+
+                <h3>4.1 Case I: Fixed Integration Domain</h3>
+
+                <p>
+                    When the coordinates \((x,t)\) remain unchanged and only the fields vary (\(\phi(x) \to \phi(x) + \epsilon\,\theta(x)\)), the domain \(\Omega\) is fixed:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    \delta S = \int_{\Omega} \left( \frac{\partial \mathcal{L}}{\partial \phi} \, \epsilon\,\theta(x) + \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \, \epsilon \, \partial_\mu \theta(x) \right) d^4x = 0
+                    \]
+                </div>
+
+                <p>
+                    Using the Euler–Lagrange equations, the second term vanishes. Using the generalized Stokes' theorem (the divergence theorem in four-dimensional spacetime), we can rewrite the integral over the 3-dimensional boundary hypersurface \(\partial\Omega\) as an integral over the 4-dimensional spacetime volume \(\Omega\):
+                </p>
+
+                \[
+                \int_{\partial\Omega} \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \epsilon\,\theta(x) \cdot \hat{n} \, dS = \int_{\Omega} \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \epsilon\,\theta(x) \right) d^4x
+                \]
+
+                <p>For the action to remain invariant (\(\delta S = 0\)) over an entirely arbitrary spacetime volume \(\Omega\), the integrand itself must vanish. Factoring out the constant arbitrary variation \(\epsilon\), we identify the conserved Noether current \(j^\mu\) as:</p>
+
+                <div class="definition-box">
+                    <h4>Noether Current (Fixed Domain)</h4>
+                    \[
+                    j^\mu = \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \theta(x), \qquad \partial_\mu j^\mu = 0
+                    \]
+                    <p>Consequently, assuming spatial contributions vanish at spatial infinity, \(\displaystyle Q = \int j^0 \, d^3x\) is the conserved charge.</p>
+                </div>
+
+                <h3>4.2 Case II: Deformation of the Integration Domain</h3>
+
+                <p>
+                    We now address the general case where \((x,t)\) coordinates are varied, directly altering the domain of integration \(\Omega \to \Omega'\). Under a spacetime symmetry \(x'^\mu = x^\mu + \epsilon\,\theta^\mu\), the field transforms as:
+                </p>
+
+                \[
+                \phi'(x'^\mu) = \phi(x'^\mu - \epsilon\,\theta^\mu) \approx \phi(x'^\mu) - \epsilon \, \partial_\mu \phi \cdot \theta^\mu
+                \]
+
+                <p>The functional variation at a fixed coordinate:</p>
+
+                \[
+                \delta\phi \equiv \phi'(x) - \phi(x) = -\epsilon^\nu \partial_\nu \phi
+                \]
+
+                <p>The total variation in the action is:</p>
+
+                \[
+                \delta S = \int_{\Omega'} \mathcal{L}(\phi', \partial_\mu \phi') \, d^4x' - \int_{\Omega} \mathcal{L}(\phi, \partial_\mu \phi) \, d^4x
+                \]
+
+                <p>This arises from two geometric sources:</p>
+
+                \[
+                \delta S = \delta S^{\text{boundary}} + \delta S^{\text{internal}}
+                \]
+
+                <p><strong>1. Boundary Contribution (Domain Shift):</strong> The translation shifts the 4-volume \(\Omega\). The change in the action evaluating the original Lagrangian over this new boundary \(\partial\Omega\) is converted to a volume integral via Stokes' theorem:</p>
+
+                <div class="equation-box">
+                    \[
+                    \delta S^{\text{boundary}} = \int_{\partial\Omega} \mathcal{L} \, \epsilon^\mu \, dS_\mu = \int_{\Omega} \partial_\mu(\epsilon^\mu \mathcal{L}) \, d^4x
+                    \]
+                </div>
+
+                <p><strong>2. Internal Contribution (Functional Variation):</strong> Inside the fixed volume \(\Omega\), the field varies by \(\delta\phi\). Using the Euler–Lagrange equations, the internal variation of the Lagrangian collapses into a total divergence:</p>
+
+                <div class="equation-box">
+                    \[
+                    \delta S^{\text{internal}} = \int_{\Omega} \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \delta\phi \right) d^4x
+                    \]
+                </div>
+
+                <p><strong>3. The Conserved Tensor:</strong> Combining both contributions and substituting \(\delta\phi = -\epsilon^\nu \partial_\nu \phi\):</p>
+
+                <div class="equation-box">
+                    \[
+                    \delta S = \int_{\Omega} \partial_\mu \left[ \epsilon^\nu \delta^\mu_\nu \mathcal{L} - \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \epsilon^\nu \partial_\nu \phi \right] d^4x = 0
+                    \]
+                </div>
+
+                <p>Since \(\epsilon^\nu\) is arbitrary and the volume \(\Omega\) is arbitrary, the term inside the divergence must be a locally conserved current. Factoring out \(-\epsilon_\nu\) yields the Canonical Energy-Momentum tensor:</p>
+
+                <div class="definition-box">
+                    <h4>Canonical Energy-Momentum Tensor</h4>
+                    \[
+                    T^\mu_{\ \nu} = \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \partial_\nu \phi - \delta^\mu_\nu \mathcal{L} \implies \partial_\mu T^{\mu\nu} = 0
+                    \]
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Again, it is evident</strong> that the \(\mathcal{L}\) term in the energy-momentum tensor showed up because of the change in boundary condition.</p>
+                </div>
+
+                <!-- Section 5: Quasi-Symmetries -->
+                <h2>5. Quasi-Symmetries and Gauge Invariance</h2>
+
+                <p>
+                    An action may not be strictly invariant under a transformation; rather, the Lagrangian may vary by a total divergence term, which leaves the equations of motion unaffected.
+                </p>
+
+                <p>
+                    For a classical field, if \(\delta\mathcal{L} = \alpha \, \partial_\mu K^\mu\), and the field variation is \(\delta\phi = \alpha \, \Delta\phi\), then tracking the variation yields:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    \delta\mathcal{L} = \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \delta\phi \right) = \alpha \, \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \Delta\phi \right)
+                    \]
+                </div>
+
+                <p>Equating this with the divergence term gives the generalized conservation law:</p>
+
+                <div class="definition-box">
+                    <h4>Generalized Noether Conservation Law</h4>
+                    \[
+                    \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \Delta\phi - K^\mu \right) = 0
+                    \]
+                </div>
+
+                <!-- Section 6: Examples -->
+                <h2>6. Illustrative Examples</h2>
+
+                <h3>Example 1: Rotational Symmetry (No Total Derivative)</h3>
+
+                <p>Consider the Lagrangian:</p>
+
+                \[
+                L = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2) - \frac{kq}{\sqrt{x^2 + y^2}}
+                \]
+
+                <p>
+                    Under an infinitesimal rotation \(x' = x + \epsilon y\) and \(y' = y - \epsilon x\), the Lagrangian transforms as \(L(x', y') = L(x, y) + \mathcal{O}(\epsilon^2)\). The conserved quantity is the angular momentum:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    \frac{\partial L}{\partial \dot{x}} \delta x + \frac{\partial L}{\partial \dot{y}} \delta y = m(\dot{x}y - \dot{y}x) = p_x y - p_y x = -L_z
+                    \]
+                </div>
+
+                <h3>Example 2: Gauge Invariance (Internal Symmetry)</h3>
+
+                <p>Consider the complex scalar field:</p>
+
+                \[
+                \mathcal{L} = (\partial_\mu \phi^*)(\partial^\mu \phi) - m^2 \phi^* \phi
+                \]
+
+                <p>Under a global phase transformation \(\phi \to e^{i\alpha}\phi \approx \phi + i\alpha\phi\), the Lagrangian is strictly invariant (\(\delta\mathcal{L} = 0\)). The conserved Noether current is:</p>
+
+                <div class="equation-box">
+                    \[
+                    J^\mu = \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \Delta\phi + \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi^*)} \Delta\phi^* = i\left[\phi \, \partial^\mu \phi^* - \phi^* \partial^\mu \phi\right]
+                    \]
+                </div>
+
+                <p>This leads to the conserved charge (assuming spatial boundaries vanish):</p>
+
+                \[
+                Q \propto \int d^3x \left( \phi^* \frac{\partial \phi}{\partial t} - \phi \frac{\partial \phi^*}{\partial t} \right) = \text{constant}
+                \]
+
+                <h3>Example 3: Galilean Boost (Point Particle Mechanics)</h3>
+
+                <p>Consider the free particle Lagrangian:</p>
+
+                \[
+                L = \frac{1}{2}m\dot{x}^2
+                \]
+
+                <p>
+                    Under an infinitesimal Galilean transformation \(x \to x + \epsilon t\) (where the boost velocity \(v = \epsilon\)), the variation of the coordinates is \(\delta x = \epsilon t\) and \(\delta \dot{x} = \epsilon\). The Lagrangian is not strictly invariant, but changes by a total time derivative:
+                </p>
+
+                \[
+                \delta L = m\dot{x}\,\delta\dot{x} = m\dot{x}\,\epsilon = \frac{d}{dt}(mx\epsilon)
+                \]
+
+                <p>Here, the total derivative term is \(F = mx\epsilon\). The conserved Noether charge incorporates this term:</p>
+
+                <div class="equation-box">
+                    \[
+                    Q = \frac{\partial L}{\partial \dot{x}} \delta x - F = (m\dot{x})(\epsilon t) - mx\epsilon
+                    \]
+                </div>
+
+                <p>Factoring out the arbitrary parameter \(\epsilon\), we obtain the conserved quantity:</p>
+
+                <div class="definition-box">
+                    <h4>Galilean Boost Invariant</h4>
+                    \[
+                    I = pt - mx = \text{constant}
+                    \]
+                    <p>(This represents the uniform motion of the center of mass.)</p>
+                </div>
+
+                <h3>Example 4: Spacetime Translation (Spacetime Symmetry)</h3>
+
+                <p>Consider a real scalar field:</p>
+
+                \[
+                \mathcal{L} = \frac{1}{2}(\partial_\mu \phi)(\partial^\mu \phi) - V(\phi)
+                \]
+
+                <p>
+                    This is the case covered in Section 4.2, which directly leads to the canonical energy-momentum tensor \(T^\mu_{\ \nu}\).
+                </p>
+
+                <!-- Section 7: Differential Geometric Derivation -->
+                <h2>7. Differential Geometric Derivation (V.I. Arnold)</h2>
+
+                <h3>Case I: Lagrangian of particle is invariant under spatial transformation</h3>
+
+                <p>
+                    Let the configuration space of the system be a smooth manifold \(M\). We consider a one-parameter group of diffeomorphisms (transformations) on this manifold:
+                </p>
+
+                \[
+                h_s : M \to M
+                \]
+
+                <p>
+                    parameterized by \(s \in \mathbb{R}\). For any coordinate \(q\), the transformed coordinate is \(q_s = h_s(q)\). This continuous transformation defines a vector field \(v(q)\) on the manifold, which represents the "velocity" of the coordinate under the transformation parameter \(s\):
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    v(q) = \left.\frac{\partial}{\partial s} h_s(q) \right|_{s=0}
+                    \]
+                </div>
+
+                <p>
+                    A Lagrangian \(L(q, \dot{q}, t)\) is strictly invariant under the transformation \(h_s\) if, for any trajectory \(q(t)\) and for all \(s\), the value of the Lagrangian remains unchanged:
+                </p>
+
+                \[
+                L\!\left(h_s(q), \frac{d}{dt}h_s(q), t\right) = L(q, \dot{q}, t)
+                \]
+
+                <p>
+                    We proceed by differentiating the invariance identity with respect to the parameter \(s\) and evaluating it at \(s = 0\). Since the right side is independent of \(s\), its derivative is zero:
+                </p>
+
+                \[
+                \left.\frac{d}{ds} L\!\left(h_s(q), \frac{d}{dt}h_s(q), t\right)\right|_{s=0} = 0
+                \]
+
+                <p>Applying the multidimensional chain rule:</p>
+
+                <div class="equation-box">
+                    \[
+                    \frac{\partial L}{\partial q} \cdot \left.\frac{\partial}{\partial s} h_s(q)\right|_{s=0} + \frac{\partial L}{\partial \dot{q}} \cdot \left.\frac{\partial}{\partial s} \left(\frac{d}{dt} h_s(q)\right)\right|_{s=0} = 0
+                    \]
+                </div>
+
+                <p>
+                    Because the partial derivatives with respect to \(s\) and \(t\) commute (the transformation does not depend on the dynamic time \(t\)), we can swap the order of differentiation in the second term:
+                </p>
+
+                \[
+                \left.\frac{\partial}{\partial s} \frac{d}{dt} h_s(q)\right|_{s=0} = \frac{d}{dt}\left.\frac{\partial}{\partial s} h_s(q)\right|_{s=0} = \frac{d}{dt} v = \dot{v}
+                \]
+
+                <p>Substituting \(v\) and \(\dot{v}\) into the chain rule expansion yields a kinematic identity (true for any path, not just classical ones):</p>
+
+                \[
+                \frac{\partial L}{\partial q} \cdot v + \frac{\partial L}{\partial \dot{q}} \cdot \dot{v} = 0
+                \]
+
+                <p>To find the conserved quantity, we restrict our attention to a classical trajectory that satisfies the Euler–Lagrange equations:</p>
+
+                \[
+                \frac{\partial L}{\partial q} = \frac{d}{dt}\frac{\partial L}{\partial \dot{q}}
+                \]
+
+                <p>Substituting this dynamic relation into the first term of our kinematic identity gives:</p>
+
+                \[
+                \frac{d}{dt}\frac{\partial L}{\partial \dot{q}} \cdot v + \frac{\partial L}{\partial \dot{q}} \cdot \dot{v} = 0
+                \]
+
+                <p>By recognizing the reverse of the product rule, we can rewrite the equation as a total time derivative:</p>
+
+                <div class="equation-box">
+                    \[
+                    \frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q}} \cdot v \right) = 0
+                    \]
+                </div>
+
+                <p>Since \(\frac{\partial L}{\partial \dot{q}}\) is the generalized momentum vector \(p\), we arrive at the conserved quantity (the Noether charge) \(I\):</p>
+
+                <div class="definition-box">
+                    <h4>Noether Charge (Geometric Form)</h4>
+                    \[
+                    I = p \cdot v(q) = \text{constant}
+                    \]
+                    <p>In geometric language, the conserved quantity corresponding to a one-parameter group of symmetries is the <strong>pairing (inner product) of the generalized momentum covector with the vector field generating the symmetry group</strong>.</p>
+                </div>
+
+                <!-- References -->
+                <div class="references">
+                    <h2>References</h2>
+                    <ol>
+                        <li>Herbert Goldstein, Charles P. Poole, and John L. Safko. <em>Classical Mechanics</em>. 3rd Edition. Pearson, 2001.</li>
+                        <li>V. I. Arnold. <em>Mathematical Methods of Classical Mechanics</em>, 2nd edition, Springer.</li>
+                        <li>Bahram Houchmandzadeh. A geometric derivation of Noether's theorem. <em>European Journal of Physics</em>, 2025, 46(2), pp.025003. ⟨10.1088/1361-6404/adb546⟩.</li>
+                    </ol>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ram Prakash. Exploring the infinite world of mathematics and physics.</p>
+    </footer>
+</body>
+</html>
