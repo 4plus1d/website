@@ -325,7 +325,7 @@
                 </p> -->
 
                 <p>
-                    What makes this particularly serious is that such "topological obstructions" appear everywhere in physics: from the Aharonov-Bohm effect to magnetic monopoles, from fluid dynamics around vortices to electromagnetic theory in non-simply-connected regions. Ignoring the topology can lead to incorrect physical predictions and flawed mathematical reasoning. The "Feynman mistake" is therefore not just a mathematical footnote, rather it's a fundamental warning that domain geometry matters.
+                    Ignoring the topology can lead to incorrect physical predictions and flawed mathematical reasoning. The "Feynman mistake" is therefore not just a mathematical footnote, rather it's a fundamental warning that domain geometry matters.
                 </p>
 
                 <h2>The Consequences of Feynman's Remark: Why Aharonov-Bohm Would Vanish</h2>
@@ -356,13 +356,13 @@
                 </p>
 
                 <p>
-                    The vector potential outside the solenoid, \(\mathbf{A} = \frac{\Phi}{2\pi r}\hat{\phi}\), has zero curl but cannot be written as \(\nabla \psi\) globally. If you try to construct \(\psi\), you'll find it's multivalued: as you go around the solenoid once, \(\psi\) increases by \(\frac{q\Phi}{\hbar}\), not returning to its original value. This is the <strong>topological obstruction</strong>; the hole occupied by the solenoid makes the region outside non-simply connected.
+                    The vector potential outside the solenoid, \(\mathbf{A} = \frac{\Phi}{2\pi r}\hat{\phi}\), has zero curl but cannot be written as \(\nabla \psi\) globally. If you try to construct \(\psi\), you'll find it's multivalued. This is the <strong>topological obstruction</strong>; the hole occupied by the solenoid makes the region outside non-simply connected.
                 </p>
 
                 <div class="definition-box">
                     <h4>The Physics Lesson</h4>
                     <p>
-                        The Aharonov-Bohm effect is not just a curious quantum phenomenon—it's a direct experimental refutation of the claim that "curl-free implies conservative" in all situations. It demonstrates that:
+                        The Aharonov-Bohm effect is a direct experimental contradiction of the claim that "curl-free implies conservative" in all situations. It demonstrates that:
                     </p>
                     <ul style="line-height: 1.8;">
                         <li><strong>\(\mathbf{B} = 0\)</strong> outside the solenoid (curl-free)</li>
@@ -371,7 +371,7 @@
                         <li><strong>The phase shift \(\Delta \theta = \frac{q\Phi}{\hbar} \neq 0\)</strong> is measurable and has been verified experimentally</li>
                     </ul>
                     <p>
-                        This is precisely the same mathematical structure we saw with \(\frac{1}{z}\) having no primitive on \(\mathbb{C} \setminus \{0\}\), and with the 1-form \(\omega = \frac{-y\,dx + x\,dy}{x^2+y^2}\) being closed but not exact. All are manifestations of non-trivial topology—holes in the domain that prevent local solutions from patching together globally.
+                        Mathematically, it is similar to the problem of \(\frac{1}{z}\) having no primitive on \(\mathbb{C} \setminus \{0\}\), and the 1-form \(\omega = \frac{-y\,dx + x\,dy}{x^2+y^2}\) being closed but not exact. All these problems are manifestations of non-trivial topology-holes in the domain that prevent local solutions from patching together globally.
                     </p>
                 </div>
 
@@ -382,7 +382,7 @@
 
                 <div class="highlight-box">
                     <p>
-                        <strong>The Quantum Twist:</strong> In quantum mechanics, this perspective changes dramatically. The Schrödinger equation couples directly to the potentials, not the fields. When a particle moves in a region where \(\mathbf{B} = 0\) but \(\mathbf{A} \neq 0\), the vector potential can have observable physical consequences. This is the <strong>Aharonov-Bohm effect</strong>.
+                        <strong>Minimal coupling in Quantum Mechanics:</strong> In quantum mechanics, the Schrödinger equation couples directly to the potentials, not the fields. When a particle moves in a region where \(\mathbf{B} = 0\) but \(\mathbf{A} \neq 0\), the vector potential can have observable physical consequences. This is the <strong>Aharonov-Bohm effect</strong>.
                     </p>
                 </div>
 
@@ -397,28 +397,21 @@
                     <li><strong>\(\mathbf{B} = \nabla \times \mathbf{A} = 0\)</strong> outside the solenoid (the 1-form is closed)</li>
                     <li><strong>\(\mathbf{A}\) is not a gradient</strong> globally (the 1-form is not exact)</li>
                     <li><strong>The non-exactness is topological:</strong> the region outside the solenoid is not simply connected (it has a hole where the solenoid is)</li>
-                    <li><strong>The flux \(\Phi\) is a topological invariant:</strong> it's proportional to the integral of \(\mathbf{A}\) around a closed loop enclosing the solenoid</li>
-                </ul>
+               </ul>
 
                 <div class="highlight-box">
                     <p>
-                        <strong>Connection to Complex Analysis:</strong> Just as \(\omega = \frac{-y\,dx + x\,dy}{x^2+y^2}\) is closed but not exact on \(\mathbb{R}^2 \setminus \{(0,0)\}\), the vector potential \(\mathbf{A} = \frac{\Phi}{2\pi r}\hat{\phi}\) is curl-free but not a gradient on the region outside the solenoid. Both are examples of <strong>cohomology</strong>: the integral around a closed loop detects the presence of a hole.
+                        <strong>Connection to Complex Analysis:</strong> Just as \(\omega = \frac{-y\,dx + x\,dy}{x^2+y^2}\) is closed but not exact on \(\mathbb{R}^2 \setminus \{(0,0)\}\), the vector potential \(\mathbf{A} = \frac{\Phi}{2\pi r}\hat{\phi}\) is curl-free but not a gradient on the region outside the solenoid. Both are examples of <strong>cohomology</strong>, the integral around a closed loop detects the presence of a hole.
                     </p>
                 </div>
 
                 <h2>Experimental Confirmation and Implications</h2>
 
                 <p>
-                    The Aharonov-Bohm effect was first confirmed experimentally by Chambers in 1960 and has since been verified with increasing precision. It's not just a theoretical curiosity—it has profound implications:
+                    The Aharonov-Bohm effect was first confirmed experimentally by Chambers in 1960 and has since been verified with increasing precision. It shows that Gauge fields are fundamental
                 </p>
 
-                <ul>
-                    <li><strong>Gauge fields are fundamental:</strong> In modern particle physics, the gauge potentials (like the photon field \(A_\mu\)) are the fundamental objects, not the field strengths \(F_{\mu\nu}\)</li>
-                    <li><strong>Topological phases of matter:</strong> Similar effects appear in condensed matter systems, leading to concepts like anyons and the quantum Hall effect</li>
-                    <li><strong>Magnetic monopoles:</strong> If magnetic monopoles exist, the electric vector potential would exhibit a dual Aharonov-Bohm effect</li>
-                </ul>
-
-                <h2>The Mathematical Structure: Fiber Bundles</h2>
+                <!-- <h2>The Mathematical Structure: Fiber Bundles</h2>
 
                 <p>
                     From a mathematical perspective, the Aharonov-Bohm effect is best understood using the language of <strong>fiber bundles</strong>. The wavefunction of the electron is a section of a complex line bundle over the physical space (with the solenoid removed). The vector potential \(\mathbf{A}\) is a connection on this bundle, and the magnetic field \(\mathbf{B}\) is its curvature.
@@ -426,7 +419,7 @@
 
                 <p>
                     The phase \(\theta = \frac{q}{\hbar} \int \mathbf{A} \cdot d\mathbf{l}\) is the <strong>holonomy</strong> of this connection: it measures how much the wavefunction "rotates" in the internal \(U(1)\) space when parallel transported around a closed loop. When the loop encloses non-zero flux, this holonomy is non-trivial—it's a topological invariant that cannot be removed by gauge transformations.
-                </p>
+                </p> -->
 
                 <h2>Conclusion: Potentials Are Real</h2>
 
@@ -435,7 +428,7 @@
                 </p>
 
                 <ol>
-                    <li><strong>The potentials \(\phi\) and \(\mathbf{A}\) are not mere mathematical conveniences</strong>—they have direct physical significance</li>
+                    <li><strong>The potentials \(\phi\) and \(\mathbf{A}\) are not mere mathematical conveniences</strong>, rather they have direct physical significance</li>
                     <li><strong>Topology matters</strong>: The global structure of space (whether it's simply connected) affects quantum phenomena</li>
                     <li><strong>Gauge theories are fundamental</strong>: Modern physics is built on gauge-invariant theories where the connection (potential) is more primitive than the curvature (field)</li>
                 </ol>
