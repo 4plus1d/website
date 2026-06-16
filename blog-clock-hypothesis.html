@@ -451,14 +451,14 @@
                 </div>
 
                 <p>
-                    This result shows that the physical clock attached to the particle measures the spacetime interval traversed by the particle. This result will be used in later section in determing the coordinate transformations, when one switches to an accelerating frame of reference.
+                    This result shows that the physical clock attached to the particle measures the spacetime interval traversed by the particle. This result will be used in determing the coordinate transformations, when one switches to an accelerating frame of reference.
                 </p>
 
                 <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #e0e0e0;">
 
-                <h2 id="appendix">Appendix: Mathematical Foundations of Geodesics</h2>
+                <h2 id="appendix">Appendix:</h2>
 
-                <h3>Local Existence and Uniqueness of Geodesics</h3>
+                <h3>Appendix 1: Local Existence and Uniqueness of Geodesics</h3>
                 <p>
                     In general relativity, a geodesic represents the path of a freely falling particle, generalizing the concept of a straight line to curved spacetime. Here I will establish the local existence and uniqueness of geodesics.
                For a semi-Riemannian manifold \((M, g)\), a curve \(\gamma: I \to M\) parameterized by proper time \(\tau\) is a geodesic if its tangent vector field \(\dot{\gamma} = \frac{d\gamma}{d\tau}\) is parallelly transported along the curve itself. In a local coordinate chart \(x^\mu\), this condition yields the geodesic equation:
@@ -481,21 +481,21 @@
                     \]
                 </div>
                 <p>
-                    Notice that geodesic equation is coordinate independent, i.e. takes the same form under any coordinate transformation, but is not invariant under reparametrization. It is invariant only under affine parametrisation of proper time \(\tau\).
+                    Notice that geodesic equation is coordinate invariant, i.e. it takes the same form under any coordinate transformation, but is not invariant under reparametrization. It is invariant only under affine parametrisation of proper time \(\tau\).
                 </p>
 
                 <p>
                     The geodesic equation is a system of \(n\) second-order, non-linear ordinary differential equations (ODEs), where \(n\) is the dimension of the manifold (e.g., \(n=4\) for spacetime). 
                 </p>
                 <p>
-                    To prove local existence and uniqueness, we reduce this system to a first-order system of \(2n\) equations. Let us introduce a different set of variables representing the components of the velocity vector:
+                    To prove local existence and uniqueness, we reduce this system to a first-order system of \(2n\) equations. Let us introduce a different set of variables \(y^\mu = \frac{dx^\mu}{d\tau}) representing the components of the velocity vector.
                 </p>
 
-                <div class="equation-box">
+                <!-- <div class="equation-box">
                     \[
                     y^\mu = \frac{dx^\mu}{d\tau}
                     \]
-                </div>
+                </div> -->
 
                 <p>
                     Using these variables, the geodesic equation can be written as:
