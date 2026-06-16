@@ -383,7 +383,7 @@
                     This integral is identically the spacetime interval evaluated between the starting and final events in Minkowski space. In a nutshell, by constructing an instantaneous inertial frame and applying the clock hypothesis, we recover the elapsed proper time for any accelerated trajectory.
                 </p>
 
-                <h2>2. Freely-Falling Particle in a Gravitational Field</h2>
+                <!-- <h2>2. Freely-Falling Particle in a Gravitational Field</h2>
 
                 <p>
                     Transitioning into curved spacetime environments, we consider a particle in free fall under the influence of a gravitational field.
@@ -406,7 +406,7 @@
 
                 <p>
                     where \(d\tau\) represents the invariant spacetime interval between the initial and final spacetime points. Thus, for a freely-falling particle, the proper time elapsed is exactly equal to the spacetime interval computed along its geodesic trajectory. &#9632;
-                </p>
+                </p> -->
 
                 <h2>3. Particle Following a General Trajectory in Spacetime</h2>
 
@@ -418,6 +418,14 @@
                     Consider a freely-falling co-moving frame (or a co-moving geodesic) at a specific point \(x^\mu(\lambda_0)\) along the trajectory, which we denote as frame <strong>Q</strong>. The mathematical existence and uniqueness theorem for geodesic differential equations guarantees that there always exists a unique geodesic satisfying any prescribed initial conditions of position and four-velocity. (Look Appendix for complete mathematical argument)
                 </p>
 
+                <div class="definition-box">
+                    <h4>Claim 1.</h4>
+                    <p>In a locally freely-falling frame, the metric tensor reduces to the flat Minkowski metric \(\eta_{\mu\nu}\).</p>
+                </div>
+
+                <p>
+                    <em>Proof.</em> Using Gaussian-normal coordinates, we can construct a local coordinate system along the geodesic. In this frame geodesics crossing the point are all radial, from which we can deduce that Christoffel symbols are zero, which implies locally first derivatives of metric tensor are zero. Therefore, under a suitable coordinate transformation at the point one can get a Minkowski metric (Refer to Appendix for complete argument). This is exactly the frame we're looking for.
+                </p>
                 <p>
                     In this local frame <strong>Q</strong>, the particle is instantaneously stationary (\(v = 0\)). By the Einstein Equivalence Principle, this configuration is locally physically equivalent to a particle accelerating in an accelerated lift (to account for particle's motion in background curved spacetime metric) and co-moving inertial frame setup analyzed in Section 1. Therefore, invoking the clock hypothesis, the rate of clock ticking in the particle's own frame matches that of the locally co-moving flat inertial frame <strong>Q</strong>, whose metric is flat at the point.
                 </p>
