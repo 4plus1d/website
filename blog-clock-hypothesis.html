@@ -460,12 +460,9 @@
 
                 <h3>Local Existence and Uniqueness of Geodesics</h3>
                 <p>
-                    In general relativity, a geodesic represents the path of a freely falling particle, generalizing the concept of a straight line to curved spacetime. To put our physical arguments on a rigorous mathematical footing, we present the proof of local existence and uniqueness of solutions to the geodesic equation.
-                </p>
-
-                <h4>1. The Geodesic Equation</h4>
-                <p>
-                    For a semi-Riemannian manifold \((M, g)\), a curve \(\gamma: I \to M\) parameterized by \(\lambda\) is a geodesic if its tangent vector field \(\dot{\gamma} = \frac{d\gamma}{d\lambda}\) is parallelly transported along the curve itself. In a local coordinate chart \(x^\mu\), this condition yields the geodesic equation:
+                    In general relativity, a geodesic represents the path of a freely falling particle, generalizing the concept of a straight line to curved spacetime. Here I will establish the local existence and uniqueness of geodesics.
+               For a semi-Riemannian manifold \((M, g)\), a curve \(\gamma: I \to M\) parameterized by \(\lambda\) is a geodesic if its tangent vector field \(\dot{\gamma} = \frac{d\gamma}{d\lambda}\) is parallelly transported along the curve itself. In a local coordinate chart \(x^\mu\), this condition yields the geodesic equation:
+                
                 </p>
 
                 <div class="equation-box">
@@ -483,13 +480,15 @@
                     \Gamma^\mu_{\alpha\beta} = \frac{1}{2} g^{\mu\sigma} \left( \frac{\partial g_{\sigma\beta}}{\partial x^\alpha} + \frac{\partial g_{\alpha\sigma}}{\partial x^\beta} - \frac{\partial g_{\alpha\beta}}{\partial x^\sigma} \right)
                     \]
                 </div>
+                <p>
+                    Notice that geodesic equation is coordinate independent, i.e. takes the same form under any coordinate transformation, but is not invariant under reparametrization. It is invariant only under affine parametrisation of proper time \tau.
+                </p>
 
-                <h4>2. Reduction to a First-Order System of ODEs</h4>
                 <p>
                     The geodesic equation is a system of \(n\) second-order, non-linear ordinary differential equations (ODEs), where \(n\) is the dimension of the manifold (e.g., \(n=4\) for spacetime). 
                 </p>
                 <p>
-                    To prove local existence and uniqueness, we reduce this system to a first-order system of \(2n\) equations. Let us introduce a set of auxiliary variables representing the components of the velocity vector:
+                    To prove local existence and uniqueness, we reduce this system to a first-order system of \(2n\) equations. Let us introduce a different set of variables representing the components of the velocity vector:
                 </p>
 
                 <div class="equation-box">
@@ -519,15 +518,8 @@
                     \[
                     \frac{dz}{d\lambda} = F(z)
                     \]
-                </div>
-
-                <p>
-                    where the vector field \(F: U \times \mathbb{R}^n \to \mathbb{R}^{2n}\) is defined by:
-                </p>
-
-                <div class="equation-box">
                     \[
-                    F(x, y) = \begin{pmatrix} y \\ -\Gamma(x)(y, y) \end{pmatrix}
+                      F(x, y) = \begin{pmatrix} y \\ -\Gamma(x)(y, y) \end{pmatrix}
                     \]
                 </div>
 
@@ -535,13 +527,13 @@
                     with components \(F^\mu(x, y) = y^\mu\) for \(1 \leq \mu \leq n\), and \(F^{n+\mu}(x, y) = -\Gamma^\mu_{\alpha\beta}(x) y^\alpha y^\beta\) for \(1 \leq \mu \leq n\).
                 </p>
 
-                <h4>3. Application of the Picard–Lindelöf Theorem</h4>
+        
                 <p>
-                    To establish existence and uniqueness of solutions, we apply the <strong>Picard–Lindelöf theorem</strong> (also known as the Cauchy–Lipschitz theorem) for autonomous systems of first-order differential equations.
+                    To establish existence and uniqueness of solutions, we can apply the <strong>Picard–Lindelöf theorem</strong> for this first-order differential equations.
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #f39c12; background: #fffdf5; border-radius: 8px;">
-                    <h4>Theorem (Picard–Lindelöf / Cauchy–Lipschitz)</h4>
+                
                     <p>
                         Let \(\Omega \subseteq \mathbb{R}^{2n}\) be an open set, and let \(F: \Omega \to \mathbb{R}^{2n}\) be a vector field that is locally Lipschitz continuous on \(\Omega\). Then, for any initial value \(z_0 \in \Omega\) and parameter value \(\lambda_0\), there exists a unique solution \(z(\lambda)\) of the initial value problem:
                         \[
@@ -551,23 +543,9 @@
                     </p>
                 </div>
 
+            
                 <p>
-                    Let us verify that our system satisfies these conditions on the open domain \(U \times \mathbb{R}^n\):
-                </p>
-                <ul>
-                    <li>
-                        <strong>Smoothness of Christoffel Symbols:</strong> In general relativity, the spacetime metric \(g_{\mu\nu}\) is assumed to be smooth (\(C^\infty\)) or at least twice continuously differentiable (\(C^2\)). Consequently, the Christoffel symbols \(\Gamma^\mu_{\alpha\beta}(x)\), which involve first derivatives of the metric, are of class \(C^1\) (continously differentiable) on the coordinate chart \(U\).
-                    </li>
-                    <li>
-                        <strong>Smoothness of the Vector Field:</strong> The vector field \(F(x, y)\) is composed of coordinate projections \(y^\mu\) and products of \(y^\alpha y^\beta\) with the Christoffel symbols \(\Gamma^\mu_{\alpha\beta}(x)\). Since products, sums, and compositions of \(C^1\) functions are also \(C^1\), the map \(F(x, y)\) is of class \(C^1\) on \(U \times \mathbb{R}^n\).
-                    </li>
-                    <li>
-                        <strong>Lipschitz Continuity:</strong> Since \(F(z)\) is of class \(C^1\) on the open domain \(U \times \mathbb{R}^n\), its partial derivatives exist and are continuous. Any \(C^1\) function on an open set is locally Lipschitz continuous.
-                    </li>
-                </ul>
-
-                <p>
-                    Therefore, the Picard–Lindelöf theorem applies. We can state the local existence and uniqueness of geodesics as follows:
+                    One can check that the Picard–Lindelöf theorem can be applied to this problem, assuming metric components to be smooth functions of coordinates. Therefore, we can state the local existence and uniqueness of geodesics as follows:
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #2ecc71; border-color: #2ecc71; background: #f4faf6; border-radius: 8px;">
