@@ -296,7 +296,60 @@
             <h2>Featured Blog Posts</h2>
             <div class="blog-grid">
                 <div class="blog-card" onclick="window.location.href='blog-clock-hypothesis.html'">
-                    <img src="clock_spacetime.png" alt="Clock flowing in curved spacetime" class="blog-image">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #0b0c10 0%, #1a202c 50%, #0b0c10 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                            <!-- Space-time grid lines -->
+                            <g stroke="#66fcf1" stroke-width="1" opacity="0.1">
+                                <path d="M 60,0 C 75,120 75,280 60,400" fill="none"/>
+                                <path d="M 140,0 C 170,120 170,280 140,400" fill="none"/>
+                                <path d="M 220,0 C 265,120 265,280 220,400" fill="none"/>
+                                <path d="M 300,0 C 360,120 360,280 300,400" fill="none"/>
+                                <path d="M 380,0 C 445,120 445,280 380,400" fill="none"/>
+                                <path d="M 460,0 C 515,120 515,280 460,400" fill="none"/>
+
+                                <path d="M 0,50 C 150,70 450,70 600,50" fill="none"/>
+                                <path d="M 0,110 C 150,140 450,140 600,110" fill="none"/>
+                                <path d="M 0,170 C 150,210 450,210 600,170" fill="none"/>
+                                <path d="M 0,230 C 150,270 450,270 600,230" fill="none"/>
+                                <path d="M 0,290 C 150,320 450,320 600,290" fill="none"/>
+                                <path d="M 0,350 C 150,370 450,370 600,350" fill="none"/>
+                            </g>
+
+                            <defs>
+                                <marker id="arrowClockCard" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#66fcf1"/>
+                                </marker>
+                            </defs>
+
+                            <!-- Axes -->
+                            <line x1="110" y1="350" x2="110" y2="40" stroke="#a0aec0" stroke-width="2" marker-end="url(#arrowClockCard)"/>
+                            <line x1="100" y1="340" x2="560" y2="340" stroke="#a0aec0" stroke-width="2" marker-end="url(#arrowClockCard)"/>
+                            <text x="95" y="45" font-family="Georgia, serif" font-size="14" fill="#a0aec0" font-weight="bold">t</text>
+                            <text x="570" y="345" font-family="Georgia, serif" font-size="14" fill="#a0aec0" font-weight="bold">x</text>
+
+                            <!-- Worldline -->
+                            <path d="M 220,340 C 235,270 295,180 460,70" fill="none" stroke="#66fcf1" stroke-width="3"/>
+
+                            <!-- Light cone -->
+                            <line x1="110" y1="340" x2="380" y2="70" stroke="#f6ad55" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6"/>
+
+                            <!-- Clocks -->
+                            <circle cx="225" cy="295" r="10" fill="#1a202c" stroke="#66fcf1" stroke-width="1.5"/>
+                            <line x1="225" y1="295" x2="225" y2="288" stroke="#66fcf1" stroke-width="1.2"/>
+                            <text x="242" y="299" font-family="Georgia, serif" font-size="11" fill="#66fcf1" font-weight="bold">τ₁</text>
+
+                            <circle cx="262" cy="215" r="10" fill="#1a202c" stroke="#66fcf1" stroke-width="1.5"/>
+                            <line x1="262" y1="215" x2="267" y2="210" stroke="#66fcf1" stroke-width="1.2"/>
+                            <text x="279" y="219" font-family="Georgia, serif" font-size="11" fill="#66fcf1" font-weight="bold">τ₂</text>
+
+                            <circle cx="362" cy="122" r="10" fill="#1a202c" stroke="#66fcf1" stroke-width="1.5"/>
+                            <line x1="362" y1="122" x2="355" y2="122" stroke="#66fcf1" stroke-width="1.2"/>
+                            <text x="379" y="126" font-family="Georgia, serif" font-size="11" fill="#66fcf1" font-weight="bold">τ₃</text>
+
+                            <!-- Label -->
+                            <text x="300" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#ffffff" opacity="0.9">Clock Hypothesis &amp; Observers</text>
+                        </svg>
+                    </div>
                     <div class="blog-content">
                         <div class="blog-title">Clock Hypothesis and Observer in General Relativity</div>
                         <div class="blog-excerpt">Exploring clock hypothesis and its application to observers on general trajectories within curved spacetime manifolds.</div>
