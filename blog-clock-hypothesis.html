@@ -460,18 +460,9 @@
 
                 <h3>Appendix 1: Local Existence and Uniqueness of Geodesics</h3>
                 <p>
-<<<<<<< HEAD
                     In general relativity, a geodesic represents the path of a freely falling particle, generalizing the concept of a straight line to curved spacetime. Here I will establish the local existence and uniqueness of geodesics.
                For a semi-Riemannian manifold \((M, g)\), a curve \(\gamma: I \to M\) parameterized by proper time \(\tau\) is a geodesic if its tangent vector field \(\dot{\gamma} = \frac{d\gamma}{d\tau}\) is parallelly transported along the curve itself. In a local coordinate chart \(x^\mu\), this condition yields the geodesic equation:
                 
-=======
-                    In general relativity, a geodesic represents the path of a freely falling particle, generalizing the concept of a straight line to curved spacetime. To put our physical arguments on a rigorous mathematical footing, we present the proof of local existence and uniqueness of solutions to the geodesic equation.
-                </p>
-
-                <h4>1. The Geodesic Equation</h4>
-                <p>
-                    For a semi-Riemannian manifold \((M, g)\), a curve \(\gamma: I \to M\) parameterized by \(\tau\) is a geodesic if its tangent vector field \(\dot{\gamma} = \frac{d\gamma}{d\tau}\) is parallelly transported along the curve itself. In a local coordinate chart \(x^\mu\), this condition yields the geodesic equation:
->>>>>>> d666713 (Fix math rendering and inline variables in appendix)
                 </p>
 
                 <div class="equation-box">
@@ -497,8 +488,15 @@
                     The geodesic equation is a system of \(n\) second-order, non-linear ordinary differential equations (ODEs), where \(n\) is the dimension of the manifold (e.g., \(n=4\) for spacetime). 
                 </p>
                 <p>
-                    To prove local existence and uniqueness, we reduce this system to a first-order system of equations. Let us introduce a different set of variables \(y^\mu = \frac{dx^\mu}{d\tau}\) representing the components of the velocity vector.
+                    To prove local existence and uniqueness, we reduce this system to a first-order system of \(2n\) equations. Let us introduce a different set of variables \(y^\mu = \frac{dx^\mu}{d\tau}\) representing the components of the velocity vector.
                 </p>
+
+                <!-- <div class="equation-box">
+                    \[
+                    y^\mu = \frac{dx^\mu}{d\tau}
+                    \]
+                </div> -->
+
                 <p>
                     Using these variables, the geodesic equation can be written as:
                 </p>
