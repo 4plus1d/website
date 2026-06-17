@@ -454,6 +454,81 @@
                     This result shows that the physical clock attached to the particle measures the spacetime interval traversed by the particle. This result will be used in determing the coordinate transformations, when one switches to an accelerating frame of reference.
                 </p>
 
+                <h2>3. Example: Gravitational Time Dilation Derivation</h2>
+
+                <div class="highlight-box">
+                    <p><strong>Example:</strong> Consider two spacetime points \((x_1, y_1, z_1)\) and \((x_2, y_2, z_2)\). Derive the time dilation result for these points. <em>[Assume metric components to be time independent]</em></p>
+                </div>
+
+                <p><strong>Solution:</strong></p>
+                
+                <p>
+                    Consider two events at the first spatial location:
+                    \[ E_1 = (x_1, y_1, z_1, t_1) \quad \text{and} \quad E_2 = (x_1, y_1, z_1, t_1 + dt_1) \]
+                </p>
+
+                <p>
+                    At Event 1 and Event 2, a light ray is flashed from \((x_1, y_1, z_1)\) towards \((x_2, y_2, z_2)\). Let the light ray emitted at Event 1 reach \((x_2, y_2, z_2)\) at time \(t_2\). Then the light ray emitted at Event 2 reaches \((x_2, y_2, z_2)\) at time \(t_2 + dt_2\).
+                </p>
+
+                <p>
+                    Since the metric components are time-independent, the coordinate time interval for the light travel is constant, yielding:
+                    \[ dt_2 = dt_1 \]
+                </p>
+
+                <p>
+                    The proper time elapsed in particle 1's frame between the flashes is given by:
+                    \[ d\tau_1 = \sqrt{g_{00}(x_1, y_1, z_1)} \, dt_1 \]
+                </p>
+
+                <p>
+                    And the proper time elapsed in particle 2's frame between the flashes is:
+                    \[ d\tau_2 = \sqrt{g_{00}(x_2, y_2, z_2)} \, dt_2 \]
+                </p>
+
+                <p>
+                    Therefore, the ratio of the clock ticking rates is:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    \frac{\text{Clock ticking rate at } (x_1, y_1, z_1)}{\text{Clock ticking rate at } (x_2, y_2, z_2)} = \frac{\sqrt{g_{00}(x_1, y_1, z_1)}}{\sqrt{g_{00}(x_2, y_2, z_2)}} \tag{1}
+                    \]
+                </div>
+
+                <p>
+                    Now, if we take the second point to spatial infinity, \((x_2, y_2, z_2) \to \infty\), the metric approaches the flat space metric, so \(g_{00} \to \eta_{00}\). This implies:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    \text{Clock ticking rate in gravitational field} = \sqrt{g_{00}} \times (\text{ticking rate in stationary inertial frame}) \tag{2}
+                    \]
+                </div>
+
+                <p>
+                    For the case of the Schwarzschild metric:
+                    \[ g_{00} = 1 - \frac{2GM}{r} \]
+                </p>
+
+                <p>
+                    Therefore, the clock ticking rate at coordinates \((r, \theta, \phi)\) is:
+                </p>
+
+                <div class="equation-box">
+                    \[
+                    = \sqrt{1 - \frac{2GM}{r}} \times (\text{ticking rate in stationary inertial frame}) \tag{3}
+                    \]
+                </div>
+
+                <div class="definition-box" style="border-left: 4px solid #2ecc71; border-color: #2ecc71; background: #f4faf6; border-radius: 8px;">
+                    <h4>Conclusion</h4>
+                    <p>
+                        \(\Rightarrow\) A clock closer to mass \(M\) ticks slower.<br>
+                        <em>i.e.</em>, a clock experiencing more gravity ticks slower.
+                    </p>
+                </div>
+
                 <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #e0e0e0;">
 
                 <h2 id="appendix">Appendix:</h2>
