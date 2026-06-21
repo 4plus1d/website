@@ -637,6 +637,103 @@
                     This fundamental result guarantees that, locally, a freely falling observer's path through spacetime exists and is completely and uniquely determined by their starting position and initial velocity vector.
                 </p>
 
+                <h3>Appendix 2: Proof that Freely Falling Frame is Locally Flat, or Inertial</h3>
+                <p>
+                    Intuitively, we refer to a particle following a geodesic as a freely falling particle, which represents a local inertial frame. Mathematically, in a local inertial frame, the first derivatives of the components of the metric tensor \(g_{\mu\nu}\) vanish at that point. (Note: All second derivatives cannot be made to vanish, since the second derivatives of the metric carry information about intrinsic curvature). Setting the first partial derivatives of the metric tensor to zero, \(\partial_\alpha g_{\mu\nu} = 0\), implies that geodesics locally behave like straight lines:
+                </p>
+                <div class="equation-box">
+                    \[
+                    \because \frac{d^2x^\mu}{d\tau^2} + \Gamma^\mu_{\nu\alpha} \frac{dx^\nu}{d\tau} \frac{dx^\alpha}{d\tau} = 0
+                    \]
+                    \[
+                    \partial_\alpha g_{\mu\nu} = 0 \implies \Gamma = 0 \implies \frac{d^2x^\mu}{d\tau^2} = 0
+                    \]
+                </div>
+                <p>
+                    In Appendix 1, we established the local existence and uniqueness of geodesics at every point in spacetime. 
+                </p>
+                <p>
+                    Consider a pseudo-Riemannian manifold \(M\) endowed with a metric \(g\). Let \(q \in M\), \(v \in T_q M\), and let:
+                    \[ \gamma: (-\varepsilon, \varepsilon) \to M \quad \text{with} \quad \gamma(0) = q, \; \gamma'(0) = v \]
+                    be the locally unique geodesic, as described in Appendix 1.
+                </p>
+                
+                <p><strong>1)</strong> Consider, for \(t \in \mathbb{R}^+\), the curve:</p>
+                <div class="equation-box">
+                    \[
+                    \alpha: \left(-\frac{\varepsilon}{t}, \frac{\varepsilon}{t}\right) \to M \quad \text{with} \quad \alpha(0) = q, \; \alpha'(0) = tv
+                    \]
+                </div>
+                <p>
+                    which satisfies the geodesic equation with the initial velocity vector scaled by a factor of \(t\). Then:
+                    \[ \alpha(p) = \gamma(tp) \quad \text{for} \quad p \in \left(-\frac{\varepsilon}{t}, \frac{\varepsilon}{t}\right) \]
+                </p>
+                <p>
+                    Therefore, we define the <strong>exponential map</strong> as \(\exp(t, q, v) = \gamma(t)\), such that \(\gamma(0) = q\), \(\gamma'(0) = v\), and \(t \in (-\varepsilon, \varepsilon)\).
+                </p>
+                <p>
+                    Consequently, \(\exp(t, q, v)\) is the solution of the geodesic equation evaluated at parameter \(t\), with initial conditions \(q \in M\) and \(v \in T_q M\). This satisfies:
+                    \[ \implies \exp(t, q, v) = \exp(1, q, tv) \]
+                    For convenience, we choose a local coordinate system centered at the point \(q\), so that \(q = 0\).
+                </p>
+
+                <p><strong>2)</strong> Consider a map from an open ball \(B_\varepsilon(0) \subset T_q M\) to an open neighborhood around \(q\):</p>
+                <div class="equation-box">
+                    \[
+                    \exp(1, q, \cdot): T_q M \to M
+                    \]
+                    \[
+                    \exp(1, q, \cdot): v \mapsto \exp(1, q, v)
+                    \]
+                </div>
+                <p>
+                    The derivative \(D\exp(1, q, \cdot)\) evaluated at \(0\) is the identity map. By the <strong>Inverse Function Theorem</strong>, there exist \(\varepsilon', \varepsilon'' \in \mathbb{R}^+\) such that \(\exp(1, q, \cdot)\) is a diffeomorphism from \(B_{\varepsilon'}(0) \subset T_q M\) to \(B_{\varepsilon''}(q) \subset M\).
+                </p>
+
+                <p><strong>3)</strong> Consequently, the inverse map \(\exp(1, q, \cdot)^{-1}\) acts as a local coordinate chart for \(B_{\varepsilon''}(q)\). We denote the coordinates established by this chart (known as <strong>Riemann Normal Coordinates</strong>) as \(x^\mu\).</p>
+                <p>
+                    For any arbitrary tangent vector \(v = v^\mu e_\mu \in T_q M\), the unique geodesic \(\gamma_v(\lambda)\) passing through \(q\) with velocity \(v\) at affine parameter \(\lambda = 0\) is given by the exponential map:
+                    \[ \gamma_v(\lambda) = \exp(1, q, \lambda v) \]
+                </p>
+                <p>
+                    By the definition of this coordinate chart, the coordinates of the manifold point \(\gamma_v(\lambda)\) map directly to the components of the vector \(\lambda v\) in the tangent space \(T_q M\). Thus, the coordinate representation of this geodesic is simply:
+                    \[ x^\mu(\lambda) = \lambda v^\mu \]
+                </p>
+                <p>
+                    Since \(v^\mu\) are constant components of the initial tangent vector, \(x^\mu(\lambda)\) represents a linear equation in the parameter \(\lambda\). Consequently, in this coordinate system, all geodesics originating from the point \(q\) are straight, radial lines.
+                </p>
+                <p>
+                    To demonstrate local flatness, we evaluate the geodesic equation in these coordinates:
+                    \[ \frac{d^2x^\mu}{d\lambda^2} + \Gamma^\mu_{\alpha\beta} \frac{dx^\alpha}{d\lambda} \frac{dx^\beta}{d\lambda} = 0 \]
+                </p>
+                <p>
+                    Substituting our radial geodesic solution \(x^\mu(\lambda) = \lambda v^\mu\), we compute the derivatives:
+                    \[ \frac{dx^\alpha}{d\lambda} = v^\alpha \quad \text{and} \quad \frac{d^2x^\mu}{d\lambda^2} = 0 \]
+                </p>
+                <p>
+                    Plugging these values into the geodesic equation gives:
+                    \[ \Gamma^\mu_{\alpha\beta}(\lambda v) v^\alpha v^\beta = 0 \]
+                </p>
+                <p>
+                    Evaluating this expression precisely at the point \(q\) (which corresponds to \(\lambda = 0\)) yields:
+                    \[ \Gamma^\mu_{\alpha\beta}(q) v^\alpha v^\beta = 0 \]
+                </p>
+                <p>
+                    Since this equation must hold for every possible initial tangent vector \(v \in T_q M\), and the Christoffel symbols \(\Gamma^\mu_{\alpha\beta}\) are symmetric in their lower indices, it implies that all Christoffel symbols evaluated at \(q\) must vanish identically:
+                    \[ \Gamma^\mu_{\alpha\beta}(q) = 0 \]
+                </p>
+                <p>
+                    From the definition of the Christoffel symbols in terms of the metric tensor:
+                    \[ \Gamma^\mu_{\alpha\beta} = \frac{1}{2} g^{\mu\rho} \left( \partial_\alpha g_{\beta\rho} + \partial_\beta g_{\alpha\rho} - \partial_\rho g_{\alpha\beta} \right) \]
+                </p>
+                <p>
+                    Setting \(\Gamma^\mu_{\alpha\beta}(q) = 0\) algebraically forces all first partial derivatives of the metric to vanish at \(q\):
+                    \[ \partial_\alpha g_{\mu\nu}(q) = 0 \]
+                </p>
+                <p>
+                    Thus, the metric is flat up to the first derivative at \(q\), mathematically realizing the locally freely falling (local inertial) frame.
+                </p>
+
                 <hr style="border: none; border-top: 2px solid #e0e0e0; margin: 3rem 0;">
 
                 <h3>References and Further Reading</h3>
